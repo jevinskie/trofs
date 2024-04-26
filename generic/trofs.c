@@ -430,8 +430,7 @@ MountRelease(Mount *mountPtr) {
  */
 
 static Tcl_HashTable *
-GetThreadHash(keyPtr)
-    Tcl_ThreadDataKey *keyPtr;
+GetThreadHash(Tcl_ThreadDataKey *keyPtr)
 {
     Tcl_HashTable **tablePtrPtr = (Tcl_HashTable **)
 	    Tcl_GetThreadData(keyPtr, (int)sizeof(Tcl_HashTable *));
@@ -457,8 +456,7 @@ GetThreadHash(keyPtr)
  */
 
 static void
-FreeThreadHash(clientData)
-    ClientData clientData;
+FreeThreadHash(ClientData clientData)
 {
     Tcl_HashTable *tablePtr = (Tcl_HashTable *) clientData;
     ClearHash(tablePtr);
@@ -476,8 +474,7 @@ FreeThreadHash(clientData)
  */
 
 static void
-ClearHash(tablePtr)
-    Tcl_HashTable *tablePtr;
+ClearHash(Tcl_HashTable *tablePtr)
 {
     Tcl_HashSearch search;
     Tcl_HashEntry *hPtr;
